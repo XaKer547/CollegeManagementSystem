@@ -1,0 +1,13 @@
+﻿using SharedKernel;
+
+namespace CollegeManagementSystem.Domain.Disciplines.Events;
+
+public sealed class DisciplineCreatedEvent : IDomainEvent
+{
+    public DisciplineCreatedEvent(Discipline discipline)
+    {
+        Discipline = discipline;
+    }
+
+    public Discipline Discipline { get; init; }
+}

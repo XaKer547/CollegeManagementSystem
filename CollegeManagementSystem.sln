@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollegeManagementSystem.Domain", "CollegeManagementSystem.Domain\CollegeManagementSystem.Domain.csproj", "{310EF76B-FA4A-414E-9D6B-D6F594033C9B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollegeManagementSystem.Infrastucture", "CollegeManagementSystem.Infrastucture\CollegeManagementSystem.Infrastucture.csproj", "{22AB7DAB-C57E-4213-9960-8A32E7FC566E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollegeManagementSystem.Application", "CollegeManagementSystem.Application\CollegeManagementSystem.Application.csproj", "{BD280712-0586-4018-8882-E2CAD4E2B05D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollegeManagementSystem.API", "CollegeManagementSystem.API\CollegeManagementSystem.API.csproj", "{03CC2073-4BE6-432A-B489-5A942E4C8BDC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollegeManagementSystem.Infrastucture.Postgres", "CollegeManagementSystem.Infrastucture.Postgres\CollegeManagementSystem.Infrastucture.Postgres.csproj", "{353850FF-64EA-4689-9955-B9B8230243A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollegeManagementSystem.Infrastucture.MSSQL", "CollegeManagementSystem.Infrastucture.MSSQL\CollegeManagementSystem.Infrastucture.MSSQL.csproj", "{04EA695C-25B4-43CB-83F4-06D1E28F6B9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastucturies", "Infrastucturies", "{C3E4D268-0BE5-4D31-9772-B889C806C744}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollegeManagementSystem.Infrastucture.Common", "CollegeManagementSystem.Infrastucture.Common\CollegeManagementSystem.Infrastucture.Common.csproj", "{8BB6F61F-75B0-476C-9041-4172DDFF3320}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedKernel", "SharedKernel\SharedKernel.csproj", "{3E725800-B3AF-415B-9E04-1C4CEB14DDDE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCollege.SSO.Shared", "SmartCollege.SSO.Shared\SmartCollege.SSO.Shared.csproj", "{3B98F5DD-ED9C-42E9-AC90-65CBC848B7DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCollege.RabbitMQ.Contracts", "SmartCollege.RabbitMQ.Contracts\SmartCollege.RabbitMQ.Contracts.csproj", "{F20C7803-B697-465C-A0A2-FFBD14C59046}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{310EF76B-FA4A-414E-9D6B-D6F594033C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{310EF76B-FA4A-414E-9D6B-D6F594033C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{310EF76B-FA4A-414E-9D6B-D6F594033C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{310EF76B-FA4A-414E-9D6B-D6F594033C9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22AB7DAB-C57E-4213-9960-8A32E7FC566E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22AB7DAB-C57E-4213-9960-8A32E7FC566E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22AB7DAB-C57E-4213-9960-8A32E7FC566E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22AB7DAB-C57E-4213-9960-8A32E7FC566E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD280712-0586-4018-8882-E2CAD4E2B05D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD280712-0586-4018-8882-E2CAD4E2B05D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD280712-0586-4018-8882-E2CAD4E2B05D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD280712-0586-4018-8882-E2CAD4E2B05D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03CC2073-4BE6-432A-B489-5A942E4C8BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03CC2073-4BE6-432A-B489-5A942E4C8BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03CC2073-4BE6-432A-B489-5A942E4C8BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03CC2073-4BE6-432A-B489-5A942E4C8BDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{353850FF-64EA-4689-9955-B9B8230243A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{353850FF-64EA-4689-9955-B9B8230243A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{353850FF-64EA-4689-9955-B9B8230243A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{353850FF-64EA-4689-9955-B9B8230243A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04EA695C-25B4-43CB-83F4-06D1E28F6B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04EA695C-25B4-43CB-83F4-06D1E28F6B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04EA695C-25B4-43CB-83F4-06D1E28F6B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04EA695C-25B4-43CB-83F4-06D1E28F6B9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BB6F61F-75B0-476C-9041-4172DDFF3320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BB6F61F-75B0-476C-9041-4172DDFF3320}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BB6F61F-75B0-476C-9041-4172DDFF3320}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BB6F61F-75B0-476C-9041-4172DDFF3320}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E725800-B3AF-415B-9E04-1C4CEB14DDDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E725800-B3AF-415B-9E04-1C4CEB14DDDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E725800-B3AF-415B-9E04-1C4CEB14DDDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E725800-B3AF-415B-9E04-1C4CEB14DDDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B98F5DD-ED9C-42E9-AC90-65CBC848B7DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B98F5DD-ED9C-42E9-AC90-65CBC848B7DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B98F5DD-ED9C-42E9-AC90-65CBC848B7DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B98F5DD-ED9C-42E9-AC90-65CBC848B7DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F20C7803-B697-465C-A0A2-FFBD14C59046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20C7803-B697-465C-A0A2-FFBD14C59046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20C7803-B697-465C-A0A2-FFBD14C59046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20C7803-B697-465C-A0A2-FFBD14C59046}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{22AB7DAB-C57E-4213-9960-8A32E7FC566E} = {C3E4D268-0BE5-4D31-9772-B889C806C744}
+		{353850FF-64EA-4689-9955-B9B8230243A8} = {C3E4D268-0BE5-4D31-9772-B889C806C744}
+		{04EA695C-25B4-43CB-83F4-06D1E28F6B9D} = {C3E4D268-0BE5-4D31-9772-B889C806C744}
+		{8BB6F61F-75B0-476C-9041-4172DDFF3320} = {C3E4D268-0BE5-4D31-9772-B889C806C744}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB6DCDD6-8BF1-4E34-98D9-F404F1EAF725}
+	EndGlobalSection
+EndGlobal

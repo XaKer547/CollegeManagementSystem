@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: smartcollege.cms
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5087:80"
+      - "7096:443"
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Port=5432;Database=POSTGRES_DB;User Id=POSTGRES_USER;Password=POSTGRES_PASSWORD;
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=CollegeManagementSystem
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=qwegjghj01
+    volumes:
+      - postgres_/var/lib/postgresql/data
