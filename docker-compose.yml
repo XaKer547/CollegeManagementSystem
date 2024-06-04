@@ -1,8 +1,7 @@
 version: '3.8'
 
 services:
-  web:
-    container_name: smartcollege.cms
+  cms:
     build:
       context: .
       dockerfile: Dockerfile
