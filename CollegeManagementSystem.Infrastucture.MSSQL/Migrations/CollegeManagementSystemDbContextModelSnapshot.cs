@@ -98,6 +98,10 @@ namespace CollegeManagementSystem.Infrastucture.MSSQL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Roles")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Employee");
@@ -176,26 +180,6 @@ namespace CollegeManagementSystem.Infrastucture.MSSQL.Migrations
                     b.HasIndex("GroupId");
 
                     b.ToTable("Student");
-                });
-
-            modelBuilder.Entity("CollegeManagementSystem.Domain.Users.UserRole", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Roles")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("User")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("CollegeManagementSystem.Domain.Groups.Group", b =>

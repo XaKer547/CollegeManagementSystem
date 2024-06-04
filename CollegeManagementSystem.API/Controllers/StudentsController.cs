@@ -32,10 +32,11 @@ public class StudentsController(IMediator mediator) : ControllerBase
         var command = new UpdateStudentCommand()
         {
             StudentId = new StudentId(studentId),
-            GroupId = new GroupId(updateStudent.GroupId),
+            GroupId = updateStudent.GroupId.HasValue ? new GroupId(updateStudent.GroupId!.Value) : null,
             FirstName = updateStudent.Firstname,
             MiddleName = updateStudent.Middlename,
             LastName = updateStudent.Lastname,
+            Blocked = updateStudent.Blocked
         };
 
         await mediator.Send(command);

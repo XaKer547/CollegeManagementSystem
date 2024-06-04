@@ -7,7 +7,10 @@ public class UpdateStudentCommandValidator : AbstractValidator<UpdateStudentComm
 {
     public UpdateStudentCommandValidator(CollegeManagementSystemDbContext context)
     {
-        When(x => x.GroupId?.Value != Guid.Empty, () =>
+        RuleFor(x => x.StudentId)
+            .Exists(context);
+
+        When(x => x.GroupId is not null, () =>
         {
             RuleFor(x => x.GroupId!)
             .Exists(context);

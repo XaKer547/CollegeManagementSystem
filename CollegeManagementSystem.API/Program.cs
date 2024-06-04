@@ -1,10 +1,11 @@
+using CollegeManagementSystem.API.HostedServices;
 using CollegeManagementSystem.API.Middlewares;
 using CollegeManagementSystem.API.Validators.Behaviors;
 using CollegeManagementSystem.Domain.Services;
 using CollegeManagementSystem.Infrastucture.Common;
 using CollegeManagementSystem.Infrastucture.Data.UnitOfWork;
 using CollegeManagementSystem.Infrastucture.EventDispatcher;
-using CollegeManagementSystem.Infrastucture.Exctentions;
+using CollegeManagementSystem.Infrastucture.Extensions;
 using FluentValidation;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -73,6 +74,8 @@ builder.Services.AddAuthentication(options =>
         options.GetClaimsFromUserInfoEndpoint = true;
         options.SaveTokens = true;
     });
+
+builder.Services.AddHostedService<DbMigrationWorker>();
 
 builder.Services.AddScoped<ICollegeManagementSystemRepository, CollegeManagementSystemDbContext>();
 

@@ -11,4 +11,5 @@ public sealed record UpdateStudentCommand : IRequest
     public string? MiddleName { get; init; }
     public string? LastName { get; init; }
     public GroupId? GroupId { get; init; }
+    public bool? Blocked { get; init; }
 }

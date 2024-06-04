@@ -47,6 +47,7 @@ namespace CollegeManagementSystem.Infrastucture.MSSQL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Roles = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Deleted = table.Column<bool>(type: "bit", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -69,20 +70,6 @@ namespace CollegeManagementSystem.Infrastucture.MSSQL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Specialization", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserRole",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    User = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Roles = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserRole", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -154,9 +141,6 @@ namespace CollegeManagementSystem.Infrastucture.MSSQL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Student");
-
-            migrationBuilder.DropTable(
-                name: "UserRole");
 
             migrationBuilder.DropTable(
                 name: "Group");

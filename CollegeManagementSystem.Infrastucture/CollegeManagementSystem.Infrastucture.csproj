@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Exctentions\**" />
+    <EmbeddedResource Remove="Exctentions\**" />
+    <None Remove="Exctentions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.5">
       <PrivateAssets>all</PrivateAssets>
