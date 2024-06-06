@@ -1,5 +1,6 @@
 using CollegeManagementSystem.API.HostedServices;
 using CollegeManagementSystem.API.Middlewares;
+using CollegeManagementSystem.API.SchemaFilters;
 using CollegeManagementSystem.API.Validators.Behaviors;
 using CollegeManagementSystem.Domain.Services;
 using CollegeManagementSystem.Infrastucture.Common;
@@ -13,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using SharedKernel;
 using System.Reflection;
+using System.Text.Json.Serialization;
 using static IdentityModel.OidcConstants;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -83,7 +85,9 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<IDomainEventDispatcher, CollegeManagementSystemEventDispatcher>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -101,6 +105,8 @@ builder.Services.AddSwaggerGen(options =>
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 
     options.IncludeXmlComments(xmlPath);
+
+    options.SchemaFilter<EnumTypesSchemaFilter>(xmlPath);
 });
 
 var app = builder.Build();
