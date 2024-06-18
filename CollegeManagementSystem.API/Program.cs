@@ -47,8 +47,7 @@ builder.Services.AddMassTransit(options =>
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(
-        builder => builder
-        .WithOrigins("https://localhost:7096")
+        builder => builder.AllowAnyOrigin()
         .AllowAnyMethod()
         .AllowAnyHeader()
         .SetIsOriginAllowed((host) => true));
