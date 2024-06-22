@@ -9,23 +9,33 @@ services:
     ports:
       - "5087:5087"
       - "7096:7096"
-    depends_on:
-      - db
-    extra_hosts:
-      - "rabbitmq:127.0.0.1"
+    networks:
+      - smartcollege_broker-network
+      - collegemanagementsystem-network
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__SmartCollegeConnection=Server=db;Port=5432;Database=CollegeManagementSystem;User Id=postgres;Password=qwegjghj01;
+      - ConnectionStrings__SmartCollegeConnection=Host=db;Port=5432;Database=CollegeManagementSystem;Username=postgres;Password=qwegjghj01;
       - ASPNETCORE_HTTP_PORTS=5087
+    depends_on:
+      - db
 
   db:
     image: postgres:latest
     container_name: db
     ports:
       - "5433:5432"
+    networks:
+      - collegemanagementsystem-network
     environment:
       - POSTGRES_DB=CollegeManagementSystem
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=qwegjghj01
     volumes:
       - /postgres:/var/lib/postgresql/data
+
+networks:
+    smartcollege_broker-network:
+        name: smartcollege_broker-network
+    collegemanagementsystem-network:
+        name: collegemanagementsystem-network
+        driver: bridge
