@@ -110,6 +110,28 @@ builder.Services.AddSwaggerGen(options =>
             Version = "v1",
         });
 
+    options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Пожалуйста вставьте Bearer вместе с токеном в это поле",
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);

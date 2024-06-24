@@ -9,9 +9,9 @@ using SharedKernel.DTOs.Disciplines;
 
 namespace CollegeManagementSystem.API.Controllers;
 
-[Authorize]
 [ApiController]
 [Route("/api/[controller]")]
+[Authorize(Roles = "HeadOfDepartment")]
 public class DisciplinesController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator mediator = mediator;

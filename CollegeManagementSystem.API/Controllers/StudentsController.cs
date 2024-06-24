@@ -12,6 +12,7 @@ namespace CollegeManagementSystem.API.Controllers;
 [Authorize]
 [ApiController]
 [Route("/api/[controller]")]
+[Authorize(Roles = "ClassroomTeacher")]
 public class StudentsController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator mediator = mediator;

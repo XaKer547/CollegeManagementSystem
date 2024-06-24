@@ -11,6 +11,7 @@ namespace CollegeManagementSystem.API.Controllers;
 [Authorize]
 [ApiController]
 [Route("/api/[controller]")]
+[Authorize(Roles = "HeadOfDepartment")]
 public class SpecializationsController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator mediator = mediator;

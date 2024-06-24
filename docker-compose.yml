@@ -2,11 +2,12 @@ version: '3.8'
 
 services:
   cms-api:
+    container_name: collegemanagementsystem.api
     hostname: collegemanagementsystem.api
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: collegemanagementsystem.api
+    restart: always
     ports:
       - "5087:80"
       - "7096:443"
@@ -29,8 +30,9 @@ services:
       - ~/.aspnet/https:/https:ro
 
   cms-db:
-    image: postgres:latest
     container_name: cms-db
+    image: postgres:latest
+    restart: always
     ports:
       - "5433:5432"
     networks:
