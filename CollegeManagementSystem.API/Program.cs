@@ -10,6 +10,7 @@ using CollegeManagementSystem.Infrastucture.Extensions;
 using FluentValidation;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using SharedKernel;
@@ -46,13 +47,18 @@ builder.Services.AddMassTransit(options =>
 
 builder.Services.AddCors(options =>
 {
+    var origins = builder.Configuration.GetValue<string>("AllowedOrigins")!
+    .Split(';');
+
     options.AddDefaultPolicy(
-        builder => builder.AllowAnyOrigin()
+        builder => builder
+        .WithOrigins("https://smartcollege.sso")
         .AllowAnyMethod()
         .AllowAnyHeader()
         .SetIsOriginAllowed((host) => true));
 });
-
+builder.WebHost.ConfigureKestrel(options =>
+options.ConfigureHttpsDefaults(options => options.ClientCertificateMode = ClientCertificateMode.NoCertificate));
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultChallengeScheme = "oidc";
@@ -60,12 +66,14 @@ builder.Services.AddAuthentication(options =>
 })
     .AddOpenIdConnect("oidc", options =>
     {
-        options.Authority = "http://localhost:5213";
+        options.Authority = "https://smartcollege.sso";
+        //builder.Configuration.GetValue<string>("SmartCollege.SSO.Base");
 
         options.RequireHttpsMetadata = false;
 
         options.ClientId = "CollegeManagementSystem.API";
-        options.ClientSecret = "Тёлка-тёлка, дай мне рэп! Твою жопу крутит Муз-ТВ!";
+
+        options.ClientSecret = "4d0dabf05d184decbbaae4acc9e89a81";
 
         options.ResponseType = GrantTypes.ClientCredentials;
 
@@ -74,6 +82,13 @@ builder.Services.AddAuthentication(options =>
 
         options.GetClaimsFromUserInfoEndpoint = true;
         options.SaveTokens = true;
+
+        var handler = new HttpClientHandler()
+        {
+            ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+        };
+
+        options.BackchannelHttpHandler = handler;
     });
 
 builder.Services.AddHostedService<DbMigrationWorker>();
