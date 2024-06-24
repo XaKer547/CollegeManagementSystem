@@ -15,7 +15,7 @@ public sealed class DeleteGroupCommandHandler(IUnitOfWork unitOfWork, IValidator
         await validator.ValidateAndThrowAsync(request, cancellationToken);
 
         var group = unitOfWork.Repository.Groups.Single(g => g.Id == request.GroupId);
-        
+
         group.Delete();
 
         unitOfWork.Repository.DeleteEntity(group);

@@ -18,7 +18,7 @@ public class PostsController(IMediator mediator) : ControllerBase
     /// <response code="200"></response>
     /// <response code="403">Пользователь не имеет доступ на получение списка должностей</response>
     [HttpGet]
-    [ProducesResponseType(200, Type = typeof(IReadOnlyCollection<PostDTO>))] 
+    [ProducesResponseType(200, Type = typeof(IReadOnlyCollection<PostDTO>))]
     [ProducesResponseType(403)]
     public async Task<IActionResult> GetPosts()
     {

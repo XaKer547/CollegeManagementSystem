@@ -1,5 +1,4 @@
 ﻿using CollegeManagementSystem.Domain.Groups.Events;
-using CollegeManagementSystem.Domain.Services;
 using MassTransit;
 using MediatR;
 using SmartCollege.RabbitMQ.Contracts.Groups;

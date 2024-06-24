@@ -1,5 +1,4 @@
 ﻿using CollegeManagementSystem.Domain.Services;
-using CollegeManagementSystem.Infrastucture.Data;
 
 namespace CollegeManagementSystem.Infrastucture.Seeders
 {
