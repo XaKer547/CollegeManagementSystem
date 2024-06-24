@@ -47,8 +47,7 @@ builder.Services.AddMassTransit(options =>
 
 builder.Services.AddCors(options =>
 {
-    var origins = builder.Configuration.GetValue<string>("AllowedOrigins")!
-    .Split(';');
+    var origins = builder.Configuration["AllowedOrigins"]!.Split(';');
 
     options.AddDefaultPolicy(
         builder => builder
@@ -137,7 +136,7 @@ app.UseReDoc(options =>
     options.SpecUrl = "/swagger/v1/swagger.json";
 });
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseCors();
 
