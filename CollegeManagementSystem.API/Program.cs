@@ -10,7 +10,6 @@ using CollegeManagementSystem.Infrastucture.Extensions;
 using FluentValidation;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using SharedKernel;
@@ -51,13 +50,12 @@ builder.Services.AddCors(options =>
 
     options.AddDefaultPolicy(
         builder => builder
-        .WithOrigins("https://smartcollege.sso")
+        .WithOrigins(origins)
         .AllowAnyMethod()
         .AllowAnyHeader()
         .SetIsOriginAllowed((host) => true));
 });
-builder.WebHost.ConfigureKestrel(options =>
-options.ConfigureHttpsDefaults(options => options.ClientCertificateMode = ClientCertificateMode.NoCertificate));
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultChallengeScheme = "oidc";
@@ -65,8 +63,7 @@ builder.Services.AddAuthentication(options =>
 })
     .AddOpenIdConnect("oidc", options =>
     {
-        options.Authority = "https://smartcollege.sso";
-        //builder.Configuration.GetValue<string>("SmartCollege.SSO.Base");
+        options.Authority = builder.Configuration["SmartCollege.SSO.Base"];
 
         options.RequireHttpsMetadata = false;
 
