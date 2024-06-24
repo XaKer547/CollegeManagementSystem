@@ -2,6 +2,7 @@
 using CollegeManagementSystem.Application.Queries.Specializations;
 using CollegeManagementSystem.Domain.Specializations;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharedKernel.DTOs.Specializations;
 

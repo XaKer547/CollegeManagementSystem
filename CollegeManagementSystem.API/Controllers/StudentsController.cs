@@ -3,6 +3,7 @@ using CollegeManagementSystem.Application.Queries.Students;
 using CollegeManagementSystem.Domain.Groups;
 using CollegeManagementSystem.Domain.Students;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharedKernel.DTOs.Students;
 

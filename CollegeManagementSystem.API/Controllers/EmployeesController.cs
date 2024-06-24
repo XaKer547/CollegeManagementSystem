@@ -2,6 +2,7 @@
 using CollegeManagementSystem.Application.Queries.Employees;
 using CollegeManagementSystem.Domain.Employees;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharedKernel.DTOs.Employees;
 

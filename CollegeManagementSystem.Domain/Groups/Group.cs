@@ -1,6 +1,5 @@
 ﻿using CollegeManagementSystem.Domain.Groups.Events;
 using CollegeManagementSystem.Domain.Specializations;
-using CollegeManagementSystem.Domain.Students;
 using SharedKernel;
 
 namespace CollegeManagementSystem.Domain.Groups;

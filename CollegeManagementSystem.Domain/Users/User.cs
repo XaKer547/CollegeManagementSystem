@@ -1,5 +1,4 @@
 ﻿using SharedKernel;
-using SmartCollege.SSO.Shared;
 
 namespace CollegeManagementSystem.Domain.Users;
 
