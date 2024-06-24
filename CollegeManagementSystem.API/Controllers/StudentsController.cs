@@ -8,6 +8,7 @@ using SharedKernel.DTOs.Students;
 
 namespace CollegeManagementSystem.API.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("/api/[controller]")]
 public class StudentsController(IMediator mediator) : ControllerBase

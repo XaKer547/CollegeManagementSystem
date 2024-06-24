@@ -11,6 +11,7 @@ using SharedKernel.DTOs.Students;
 
 namespace CollegeManagementSystem.API.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("/api/[controller]")]
 public class GroupsController(IMediator mediator) : ControllerBase

@@ -5,6 +5,7 @@ using SharedKernel.DTOs.Posts;
 
 namespace CollegeManagementSystem.API.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("/api/[controller]")]
 public class PostsController(IMediator mediator) : ControllerBase
