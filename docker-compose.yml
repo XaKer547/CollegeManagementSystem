@@ -14,6 +14,8 @@ services:
     networks:
       - smartcollege_broker-network
       - collegemanagementsystem-network
+    depends_on:
+      - cms-db
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__SmartCollegeConnection=Host=cms-db;Port=5432;Database=CollegeManagementSystem;Username=postgres;Password=qwegjghj01;
@@ -23,9 +25,6 @@ services:
       - ASPNETCORE_HTTP_PORTS=80
       - ASPNETCORE_Kestrel__Certificates__Default__Password=qwegjghj01
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/collegemanagementsystem.api.pfx
-      
-    depends_on:
-      - cms-db
     volumes:
       - ~/.aspnet/https:/https:ro
 
