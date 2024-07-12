@@ -3,6 +3,7 @@ using CollegeManagementSystem.Application.Queries.Disciplines;
 using CollegeManagementSystem.Domain.Disciplines;
 using CollegeManagementSystem.Domain.Employees;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharedKernel.DTOs.Disciplines;
 
@@ -10,6 +11,7 @@ namespace CollegeManagementSystem.API.Controllers;
 
 [ApiController]
 [Route("/api/[controller]")]
+[Authorize(Roles = "HeadOfDepartment")]
 public class DisciplinesController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator mediator = mediator;

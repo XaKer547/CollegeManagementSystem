@@ -1,10 +1,8 @@
 ﻿using CollegeManagementSystem.Application.Queries.Employees;
-using CollegeManagementSystem.Domain.Helpers;
 using CollegeManagementSystem.Domain.Services;
 using FluentValidation;
 using MediatR;
 using SharedKernel.DTOs.Employees;
-using SharedKernel.DTOs.Posts;
 
 namespace CollegeManagementSystem.Application.QueryHandlers.Employees;
 

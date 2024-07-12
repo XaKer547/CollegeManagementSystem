@@ -1,7 +1,6 @@
 ﻿using CollegeManagementSystem.Application.Commands.Employees;
 using CollegeManagementSystem.Domain.Employees;
 using CollegeManagementSystem.Domain.Services;
-using CollegeManagementSystem.Domain.Users;
 using FluentValidation;
 using MediatR;
 

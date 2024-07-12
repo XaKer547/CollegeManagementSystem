@@ -36,7 +36,7 @@ builder.Services.AddMassTransit(options =>
 {
     options.UsingRabbitMq((context, conf) =>
     {
-        conf.Host("localhost", 5672, "/", c =>
+        conf.Host("rabbitmq", 5672, "/", c =>
         {
             c.Username("guest");
             c.Password("guest");
@@ -46,9 +46,11 @@ builder.Services.AddMassTransit(options =>
 
 builder.Services.AddCors(options =>
 {
+    var origins = builder.Configuration["AllowedOrigins"]!.Split(';');
+
     options.AddDefaultPolicy(
         builder => builder
-        .WithOrigins("https://localhost:7096")
+        .WithOrigins(origins)
         .AllowAnyMethod()
         .AllowAnyHeader()
         .SetIsOriginAllowed((host) => true));
@@ -61,12 +63,13 @@ builder.Services.AddAuthentication(options =>
 })
     .AddOpenIdConnect("oidc", options =>
     {
-        options.Authority = "http://localhost:5213";
+        options.Authority = builder.Configuration["SmartCollege.SSO.Base"];
 
         options.RequireHttpsMetadata = false;
 
         options.ClientId = "CollegeManagementSystem.API";
-        options.ClientSecret = "Тёлка-тёлка, дай мне рэп! Твою жопу крутит Муз-ТВ!";
+
+        options.ClientSecret = "4d0dabf05d184decbbaae4acc9e89a81";
 
         options.ResponseType = GrantTypes.ClientCredentials;
 
@@ -75,6 +78,13 @@ builder.Services.AddAuthentication(options =>
 
         options.GetClaimsFromUserInfoEndpoint = true;
         options.SaveTokens = true;
+
+        var handler = new HttpClientHandler()
+        {
+            ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+        };
+
+        options.BackchannelHttpHandler = handler;
     });
 
 builder.Services.AddHostedService<DbMigrationWorker>();
@@ -100,6 +110,28 @@ builder.Services.AddSwaggerGen(options =>
             Version = "v1",
         });
 
+    options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Пожалуйста вставьте Bearer вместе с токеном в это поле",
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -123,7 +155,7 @@ app.UseReDoc(options =>
     options.SpecUrl = "/swagger/v1/swagger.json";
 });
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseCors();
 

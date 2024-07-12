@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SmartCollege.SSO.Shared;
-
-namespace CollegeManagementSystem.Infrastucture.Seeders
+﻿namespace CollegeManagementSystem.Infrastucture.Seeders
 {
     public partial class DbSeeder
     {

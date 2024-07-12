@@ -5,14 +5,17 @@ using CollegeManagementSystem.Application.Queries.Students;
 using CollegeManagementSystem.Domain.Groups;
 using CollegeManagementSystem.Domain.Specializations;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharedKernel.DTOs.Groups;
 using SharedKernel.DTOs.Students;
 
 namespace CollegeManagementSystem.API.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("/api/[controller]")]
+[Authorize(Roles = "ClassroomTeacher")]
 public class GroupsController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator mediator = mediator;

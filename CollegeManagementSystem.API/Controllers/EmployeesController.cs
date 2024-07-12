@@ -2,13 +2,16 @@
 using CollegeManagementSystem.Application.Queries.Employees;
 using CollegeManagementSystem.Domain.Employees;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharedKernel.DTOs.Employees;
 
 namespace CollegeManagementSystem.API.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("/api/[controller]")]
+[Authorize(Roles = "HeadOfDepartment")]
 public class EmployeesController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator mediator = mediator;

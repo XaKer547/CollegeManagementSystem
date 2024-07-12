@@ -2,6 +2,7 @@
 using CollegeManagementSystem.Application.Queries.Specializations;
 using CollegeManagementSystem.Domain.Specializations;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharedKernel.DTOs.Specializations;
 
@@ -9,6 +10,7 @@ namespace CollegeManagementSystem.API.Controllers;
 
 [ApiController]
 [Route("/api/[controller]")]
+[Authorize(Roles = "HeadOfDepartment")]
 public class SpecializationsController(IMediator mediator) : ControllerBase
 {
     private readonly IMediator mediator = mediator;

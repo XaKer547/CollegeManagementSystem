@@ -1,8 +1,8 @@
-﻿using Microsoft.OpenApi.Any;
+﻿using CollegeManagementSystem.Domain.Helpers;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Xml.Linq;
-using CollegeManagementSystem.Domain.Helpers;
 
 namespace CollegeManagementSystem.API.SchemaFilters;
 

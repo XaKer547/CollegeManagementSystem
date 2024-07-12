@@ -1,26 +1,53 @@
 version: '3.8'
 
 services:
-  cms:
+  cms-api:
+    container_name: collegemanagementsystem.api
+    hostname: collegemanagementsystem.api
     build:
       context: .
       dockerfile: Dockerfile
+    restart: always
     ports:
       - "5087:80"
       - "7096:443"
+    networks:
+      - smartcollege_broker-network
+      - collegemanagementsystem-network
     depends_on:
-      - db
+      - cms-db
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=db;Port=5432;Database=POSTGRES_DB;User Id=POSTGRES_USER;Password=POSTGRES_PASSWORD;
+      - ConnectionStrings__SmartCollegeConnection=Host=cms-db;Port=5432;Database=CollegeManagementSystem;Username=postgres;Password=qwegjghj01;
+      - AllowedOrigins="http://smartcollege.sso:5213;"
+      - SmartCollege.SSO.Base=http://smartcollege.sso:5213
+      - ASPNETCORE_HTTPS_PORTS=443
+      - ASPNETCORE_HTTP_PORTS=80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=qwegjghj01
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/collegemanagementsystem.api.pfx
+    volumes:
+      - ~/.aspnet/https:/https:ro
 
-  db:
+  cms-db:
+    container_name: cms-db
     image: postgres:latest
+    restart: always
     ports:
       - "5433:5432"
+    networks:
+      - collegemanagementsystem-network
     environment:
       - POSTGRES_DB=CollegeManagementSystem
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=qwegjghj01
     volumes:
-      - postgres_/var/lib/postgresql/data
+      - /postgres:/var/lib/postgresql/cms
+
+networks:
+    smartcollege_broker-network:
+        name: smartcollege_broker-network
+    smartcollege_sso-network:
+        name: smartcollege_sso-network
+    collegemanagementsystem-network:
+        name: collegemanagementsystem-network
+        driver: bridge

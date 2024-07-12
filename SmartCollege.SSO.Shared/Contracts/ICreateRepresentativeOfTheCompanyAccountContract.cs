@@ -1,6 +1,6 @@
 ﻿namespace SmartCollege.SSO.Shared.Contracts
 {
-    public interface ICreateRepresentativeOfTheCompanyAccountContract 
+    public interface ICreateRepresentativeOfTheCompanyAccountContract
     {
         string Email { get; set; }
 

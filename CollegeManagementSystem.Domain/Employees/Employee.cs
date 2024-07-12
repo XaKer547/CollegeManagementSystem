@@ -1,4 +1,5 @@
-﻿using CollegeManagementSystem.Domain.Employees.Events;
+﻿using CollegeManagementSystem.Domain.Disciplines;
+using CollegeManagementSystem.Domain.Employees.Events;
 using CollegeManagementSystem.Domain.Users;
 using SmartCollege.SSO.Shared;
 
@@ -12,7 +13,6 @@ public sealed class Employee : User<EmployeeId>
     }
 
     public Roles[] Roles { get; private set; }
-
     public static Employee Create(string firstName, string middleName, string lastName, Roles[] roles)
     {
         var employee = new Employee()
@@ -49,10 +49,7 @@ public sealed class Employee : User<EmployeeId>
         var employeeeUpdatedEvent = new EmployeeUpdatedEvent(this);
 
         AddEvent(employeeeUpdatedEvent);
-
-        //UpdateAccount(password, Roles, Blocked);
     }
-
     public void Delete()
     {
         DeleteAccount();
